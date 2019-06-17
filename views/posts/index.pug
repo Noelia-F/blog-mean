@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    main.wrapper
+        h1.title Lista de artículos
+        ul.posts__list
+            each post in posts
+                li.post__item
+                    p.post__title #{post.title}
+                    a(href="/posts/"+post._id) Ver Detalle

@@ -1,0 +1,28 @@
+extends ../layout.pug
+
+block content
+    main.wrapper
+        h2.title Artículo nuevo
+        form.form-box(action="/posts/create", method="POST")
+            .form-group
+                label Autor
+                input.form-control(type="text", name="userName")
+            .form-group
+                label Título
+                input.form-control(type="text", name="title")
+            .form-group
+                label Texto
+                textarea.form-control(name="content", cols="30", rows="10")
+            .form-group.form-group--small
+                label Categoría
+                select.form-control(name='category')
+                    option(value='actualidad') Actualidad
+                    option(value='economia') Economía
+                    option(value='salud') Salud
+                    option(value='cultura') Cultura
+                    option(value='deporte') Deporte
+            .form-group.form-group--small
+                label Publicar ahora
+                input.form-control(type="checkbox", name="published")
+            .button-box
+                input(type="submit", value="Enviar", class="button button--principal")

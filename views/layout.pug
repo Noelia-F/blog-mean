@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    .grid
+      aside.aside
+        ul.aside__list
+          li.aside__item
+            a(href="/") Página principal
+          li.aside__item
+            a(href="/posts/") Ver todos los artículos
+          li.aside__item
+            a(href="/posts/new") Crear Artículo
+      .content
+        block content
