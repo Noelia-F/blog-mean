@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+    main.wrapper.detail__grid
+        h1.title Previsualización del artículo
+        section
+            article.article
+                p.category #{post.category}
+                h2.title--post #{post.title}
+                p #{post.content}
+                span.label #{post.published ? 'Publicada' : 'En espera de publicación'}
+            a.button.button--delete(href="/posts/delete/"+post._id) Eliminar
+        section
+            form.form-box(action="/posts/edit/"+post._id, method="POST")
+                .form-group
+                    label Título
+                    input.form-control(type="text", name="title" value=post.title)
+                .form-group
+                    label Texto
+                    textarea.form-control(name="content", cols="30", rows="10") #{post.content}
+                .form-group.form-group--small
+                    label Categoría
+                    select.form-control(name='category' value='cultura')
+                        option(value='actualidad' selected=(post.category === 'actualidad')) Actualidad
+                        option(value='economia' selected=(post.category === 'economia')) Economía
+                        option(value='salud' selected=(post.category === 'salud')) Salud
+                        option(value='cultura' selected=(post.category === 'cultura')) Cultura
+                        option(value='deporte' selected=(post.category === 'deporte')) Deporte
+                .form-group.form-group--small
+                    label Publicar ahora
+                    input.form-control(type="checkbox", name="published" checked=post.published)
+                .button-box
+                    input(type="submit", value="Editar", class="button button--principal")
